@@ -1,0 +1,63 @@
+%\usepackage{t1enc}
+\usepackage{soul}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{wrapfig}
+
+\def\figurePath{figures/}
+
+\def\myfigure#1#2{\begin{figure}[htb]\centering\includegraphics*[width = \linewidth]{\figurePath#1}\caption{#2}\label{fig:#1}\end{figure}}
+
+\def\mycfigure#1#2{\begin{figure*}[t]\centering\includegraphics*[clip, width = \linewidth]{\figurePath#1}\caption{#2}\label{fig:#1}\end{figure*}}
+
+\newcommand{\mywrapfigure}[3]{%
+\begin{wrapfigure}{r}{#2\columnwidth}%
+  \begin{center}%
+    \includegraphics[width=#2\columnwidth]{\figurePath#1}%
+    \vspace{0.0cm}%
+    \caption{#3}%
+    \label{fig:#1}%
+  \end{center}%
+\end{wrapfigure}%
+\leavevmode%
+}
+
+\newcommand{\TR}[1]{\textcolor{blue}{\textbf{TR: #1}}}
+\newcommand{\eg}{e.g., }
+\newcommand{\ie}{i.e., }
+
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg\,max}}}
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{arg\,min}\ }}
+\newcommand{\diag}[1]{\operatorname{diag}(#1)}
+\newcommand{\refSec}[1]{Sec.~\ref{sec:#1}}
+\newcommand{\refFig}[1]{Fig.~\ref{fig:#1}}
+\newcommand{\refEq}[1]{Eq.~\ref{eq:#1}}
+\newcommand{\refTbl}[1]{Tbl.~\ref{tbl:#1}}
+\newcommand{\refFigStart}[1]{Figure~\ref{fig:#1}}
+
+\newcommand{\unsure}[1]{{\sethlcolor{yellow}\hl{#1}}}
+
+\soulregister\ref7
+\soulregister\cite7
+\soulregister\refFig7
+\soulregister\refFigStart7
+\soulregister\cite7
+\soulregister\ref7
+\soulregister\pageref7
+\soulregister\shortcite7
+\soulregister\namecite7
+\soulregister\eg7
+\soulregister\ie7
+\soulregister\etal7
+\soulregister\reftbl7
+\soulregister\name7
+\soulregister\unsure7
+
+\DeclareGraphicsExtensions{.png,.jpg,.pdf,.ai,.psd}
+\DeclareGraphicsRule{.ai}{pdf}{.ai}{}
+\DeclareGraphicsRule{.psd}{pdf}{.psd}{}
+
+\newcommand{\mysection}[2]{\section{#1}\label{sec:#2}}
+\newcommand{\mysubsection}[2]{\subsection{#1}\label{sec:#2}}
+\newcommand{\mysubsubsection}[2]{\subsubsection{#1}\label{sec:#2}}
