@@ -6,6 +6,6 @@ Official code repository for the paper:
 
 [Henzler](https://henzler.github.io), [J. Mitra](http://www0.cs.ucl.ac.uk/staff/n.mitra/), [Ritschel](http://www.homepages.ucl.ac.uk/~ucactri/)
 
-**[[Paper](TODO)] [[Project page](https://henzler.github/io/publication/neuralmaterial/)]**
+**[[Paper](TODO)] [[Project page](https://henzler.github.io/publication/neuralmaterial/)]**
 
 ## Code coming soon ...
