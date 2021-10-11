@@ -1,0 +1,4 @@
+run:
+  dir: trainings/${name}
+job:
+  name: ${name}

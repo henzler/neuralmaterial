@@ -1,0 +1,11 @@
+
+defaults:
+- _self_
+- hydra: default
+- trainer: default
+- model: default
+- data: default
+
+name: NeuralmaterialFlippedY
+device: cuda
+seed: 42

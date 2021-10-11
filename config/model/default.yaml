@@ -1,0 +1,14 @@
+layers: 4
+w: 32
+z: 64
+renderer:
+  fov: 45
+  gamma: 2.2
+  attenuation: True
+lr: 1e-4
+weight_decay: 0.00001
+loss:
+  crop: [0.1, 8.0]
+  gram: 1
+  vggps: 0.001
+  kl: 0.0005

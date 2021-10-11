@@ -1,0 +1,5 @@
+epochs: 15
+progress_bar_update: 100
+print_num_params: True
+val_every: 1
+save_checkpoint_every: 1

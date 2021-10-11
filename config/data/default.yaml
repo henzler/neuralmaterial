@@ -1,0 +1,6 @@
+size: [384,512]
+path: '../../flash_images'
+bs: 4
+n_workers: 12
+train_samples: 100000
+val_samples: 1000

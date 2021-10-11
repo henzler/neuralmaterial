@@ -1,0 +1,35 @@
+name: Neuralmaterial
+device: cuda
+seed: 42
+trainer:
+  epochs: 12
+  progress_bar_update: 100
+  print_num_params: true
+  val_every: 1
+  save_checkpoint_every: 1
+model:
+  layers: 4
+  w: 32
+  z: 64
+  renderer:
+    fov: 45
+    gamma: 2.2
+    attenuation: true
+  lr: 0.0001
+  weight_decay: 1.0e-05
+  loss:
+    crop:
+    - 0.1
+    - 8.0
+    gram: 1
+    vggps: 0.001
+    kl: 0.0005
+data:
+  size:
+  - 384
+  - 512
+  path: ../../flash_images
+  bs: 4
+  n_workers: 12
+  train_samples: 100000
+  val_samples: 1000
