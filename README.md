@@ -8,6 +8,9 @@ Official code repository for the paper:
 
 **[[Paper](https://arxiv.org/pdf/2102.11861.pdf)] [[Project page](https://henzler.github.io/publication/neuralmaterial/)]**
 
+
+![Rerendering](images/animation.gif)
+
 ## Data
 
 The dataset is stored under `flash_images` and contains 306 train folders and 116 test folders (including images from [Aitalla et al](https://mediatech.aalto.fi/publications/graphics/TwoShotSVBRDF/)).
@@ -72,5 +75,5 @@ If you find our work useful in your research, please cite:
 }
 ```
 
-### Contact:
+### Contact
 If you have any questions, please email Philipp Henzler at philipp.henzler@cs.ucl.ac.uk.
