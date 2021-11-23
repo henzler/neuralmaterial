@@ -6,6 +6,6 @@ defaults:
 - model: default
 - data: default
 
-name: NeuralmaterialFlippedY
+name: Neuralmaterial
 device: cuda
 seed: 42

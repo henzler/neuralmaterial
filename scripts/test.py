@@ -20,7 +20,7 @@ if __name__ == '__main__':
                         help='path to stationary flash image')
     parser.add_argument('--finetune', type=bool, required=False, default=True,
                         help='finetune for given example')
-    parser.add_argument('--gpu', type=bool, required=False, default=True,
+    parser.add_argument('--device', type=str, required=False, default='cuda',
                         help='use GPU / CPU')
     parser.add_argument('--h', type=int, required=False, default=384,
                         help='output height')
@@ -30,12 +30,15 @@ if __name__ == '__main__':
     python scripts/test.py --model trainings/Neuralmaterial --test_image_id 0280
     '''
 
+
     finetuning_steps = 1000
     args = parser.parse_args()
 
-    device = 'cpu'
-    if torch.cuda.is_available() and args.gpu:
+    if torch.cuda.is_available() and args.device == 'cuda':
         device = 'cuda'
+    else:
+        device = 'cpu'
+
 
     # load config
     cfg = OmegaConf.load(str(Path(args.model, '.hydra', 'config.yaml')))
@@ -76,21 +79,23 @@ if __name__ == '__main__':
     model.eval()
     model.to(device)
 
-    # run forward pass and retrieve brdf decomposition
-    image_out, brdf_maps, _, _ , _ = model.forward(image, 'test', size=(args.h, args.w))
+    with torch.no_grad():
+        # run forward pass and retrieve brdf decomposition
+        image_out, brdf_maps, _, _ , _ = model.forward(image, 'test', size=(args.h, args.w))
 
     output_path = Path('outputs', 'resynthesis', args.test_image_id)
     output_path.mkdir(parents=True, exist_ok=True)
 
     # write outputs to disk
-    io.write_png((image_out[0] * 255).byte().cpu(), str(Path(output_path,'rendering.png')))
-    io.write_png((image[0] * 255).byte().cpu(), str(Path(output_path,'input.png')))
+    io.write_png((image_out[0].clamp(0.0,1.0) * 255).byte().cpu(), str(Path(output_path,'rendering.png')))
+    io.write_png((image[0].clamp(0.0,1.0) * 255).byte().cpu(), str(Path(output_path,'input.png')))
 
     for k, v in brdf_maps.items():
 
         if k == 'normal':
             v = (v + 1) / 2
 
-        io.write_jpeg((v[0]* 255).byte().cpu(), str(Path(output_path, f'{k}.jpg')), quality = 100)
+        io.write_png((v[0].clamp(0.01, 0.99) * 255).byte().cpu(), str(Path(output_path, f'{k}.png')))
 
+    print(f'synthesised {args.test_image_id}')
     

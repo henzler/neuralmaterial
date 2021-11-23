@@ -9,7 +9,7 @@ Official code repository for the paper:
 **[[Paper](https://arxiv.org/pdf/2102.11861.pdf)] [[Project page](https://henzler.github.io/publication/neuralmaterial/)]**
 
 
-![Rerendering](images/animation.gif)
+![Rerendering](images/relighting.gif)
 
 ## Data
 
@@ -18,11 +18,7 @@ The dataset is stored under `flash_images` and contains 306 train folders and 11
 ### Install dependencies
 
 ```
-conda create -n neuralmaterial python=3.8
-conda activate neuralmaterial
-pip install hydra-core --upgrade
-pip install tqdm
-conda install pytorch==1.7.1 torchvision==0.8.2 cudatoolkit=10.1 -c pytorch
+conda env create --name neuralmaterial --file=environment.yml
 ```
 
 ### Training

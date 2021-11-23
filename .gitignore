@@ -1,2 +1,5 @@
 *.idea/
 outputs/
+
+*.ckpt
+!latest.ckpt
